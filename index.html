@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.77">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; color: #fb0207; -webkit-text-stroke: 0px #fb0207}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;Google Maps met vallende pins&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#map { height: 100vh; width: 100%; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="map"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function initMap() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const map = new google.maps.Map(document.getElementById("map"), {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>zoom: 10,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>center: { lat: 52.370, lng: 4.895 }, // Bijv. Amsterdam</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Voorbeeld locaties (vervang door je eigen)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const locaties = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ lat: 52.377, lng: 4.900, titel: "Locatie 1" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ lat: 52.360, lng: 4.885, titel: "Locatie 2" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{ lat: 52.390, lng: 4.920, titel: "Locatie 3" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Custom icon (vervang door je eigen URL, bijv. een PNG van 32x32 px)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const customIcon = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png", // Voorbeeld icon</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>scaledSize: new google.maps.Size(40, 40), // Grootte aanpassen</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>let i = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function dropPin() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (i &lt; locaties.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>new google.maps.Marker({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: { lat: locaties[i].lat, lng: locaties[i].lng },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>map: map,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: google.maps.Animation.DROP, // Dit is de vallende animatie!</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>title: locaties[i].titel,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>icon: customIcon, // Custom pictogram</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>i++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>setTimeout(dropPin, 400); // Vertraging van 400ms tussen pins</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>dropPin(); // Start de animatie</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Laad de API met je eigen key --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script async src="https://maps.googleapis.com/maps/api/js?key=</span><span class="s2">AIzaSyDT9gGI34FarCPdxUrT4JeFFVhF4z0X3o4</span><span class="s1">&amp;callback=initMap"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
